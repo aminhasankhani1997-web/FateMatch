@@ -1,0 +1,6 @@
+export function json(data,status=200,headers={}){return new Response(JSON.stringify(data),{status,headers:{"content-type":"application/json; charset=utf-8","cache-control":"no-store",...headers}})}
+export function clean(v,max){return typeof v==="string"?v.trim().replace(/\s+/g," ").slice(0,max):""}
+export function normalizeCity(v){return clean(v,60).toLocaleLowerCase("fa").replace(/\u200c/g," ")}
+async function hmac(secret,data){const key=await crypto.subtle.importKey("raw",new TextEncoder().encode(secret),{name:"HMAC",hash:"SHA-256"},false,["sign","verify"]);const sig=await crypto.subtle.sign("HMAC",key,new TextEncoder().encode(data));return btoa(String.fromCharCode(...new Uint8Array(sig))).replaceAll("+","-").replaceAll("/","_").replaceAll("=","")}
+export async function makeSession(secret){const payload=String(Date.now()+8*60*60*1000);return payload+"."+await hmac(secret,payload)}
+export async function validSession(request,secret){const c=request.headers.get("Cookie")||"";const raw=c.split(";").map(x=>x.trim()).find(x=>x.startsWith("fm_admin="))?.slice(9);if(!raw)return false;const [exp,sig]=raw.split(".");if(!exp||!sig||Number(exp)<Date.now())return false;return (await hmac(secret,exp))===sig}

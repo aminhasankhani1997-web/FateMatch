@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FateMatch ❤️ | بذار سرنوشت انتخاب کنه</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="hero">
+  <div class="brand">FateMatch <span>♥</span></div>
+  <p class="tagline">Let Fate Decide.</p>
+  <h1>بذار سرنوشت انتخاب کنه!</h1>
+  <p class="intro">ثبت‌نام کن، شهرت رو انتخاب کن و منتظر قرعه‌کشی بمون.</p>
+</header>
+<main>
+  <section class="panel">
+    <h2>ثبت‌نام در قرعه‌کشی</h2>
+    <form id="signup">
+      <label>اسم یا اسم مستعار<input name="name" maxlength="40" required placeholder="مثلاً آرش"></label>
+      <label>جنسیت
+        <select name="gender" required><option value="">انتخاب کن</option><option value="girl">دختر</option><option value="boy">پسر</option></select>
+      </label>
+      <label>شهر<input name="city" maxlength="60" required placeholder="مثلاً تهران"></label>
+      <label>آیدی توییتر / X<input name="twitter" maxlength="80" required placeholder="@username"></label>
+      <label class="consent"><input type="checkbox" name="consent" required> موافقم آیدی X من فقط به فردی که با او جفت می‌شوم نمایش داده شود.</label>
+      <button type="submit">ثبت‌نام ✨</button>
+      <p id="signupMsg" class="message" role="status"></p>
+    </form>
+  </section>
+
+  <section class="panel result-panel">
+    <h2>دیدن نتیجه قرعه‌کشی</h2>
+    <p>کد پیگیری‌ای را که بعد از ثبت‌نام دریافت کردی وارد کن.</p>
+    <form id="resultForm">
+      <label>کد پیگیری<input name="token" required placeholder="کد پیگیری ثبت‌نام"></label>
+      <button type="submit" class="secondary">دیدن نتیجه من</button>
+      <p id="resultMsg" class="message" role="status"></p>
+    </form>
+    <div id="resultCard" class="match-card" hidden></div>
+  </section>
+</main>
+<footer>FateMatch ❤️ · آشنایی با انتخاب تصادفی</footer>
+<script src="/app.js"></script>
+</body></html>

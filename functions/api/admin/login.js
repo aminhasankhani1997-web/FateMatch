@@ -1,0 +1,2 @@
+import {json,makeSession} from "../_utils.js";
+export async function onRequestPost({request,env}){const b=await request.json().catch(()=>({}));if(!env.ADMIN_PASSWORD||b.password!==env.ADMIN_PASSWORD)return json({error:"رمز عبور اشتباه است."},401);const s=await makeSession(env.ADMIN_PASSWORD);return json({ok:true},200,{"set-cookie":`fm_admin=${s}; HttpOnly; Secure; SameSite=Strict; Path=/api/admin; Max-Age=28800`})}

@@ -1,0 +1,6 @@
+<!doctype html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>مدیریت FateMatch</title><link rel="stylesheet" href="/style.css"></head><body>
+<header class="hero"><div class="brand">FateMatch <span>♥</span></div><h1>پنل مدیریت</h1></header>
+<main class="admin-wrap">
+<section class="panel" id="loginPanel"><h2>ورود مدیر</h2><form id="login"><label>رمز مدیریت<input type="password" name="password" required autocomplete="current-password"></label><button>ورود</button><p id="loginMsg" class="message"></p></form></section>
+<section class="panel" id="dashboard" hidden><h2>مدیریت شرکت‌کننده‌ها</h2><div class="stats" id="stats"></div><div class="admin-actions"><button id="refresh">به‌روزرسانی فهرست</button><button id="draw">اجرای قرعه‌کشی این دور</button><button id="logout" class="secondary">خروج</button></div><p id="adminMsg" class="message"></p><div class="table-scroll" id="participants"></div></section>
+</main><script src="/admin.js"></script></body></html>
